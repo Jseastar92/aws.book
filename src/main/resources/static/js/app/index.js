@@ -29,13 +29,12 @@ var main = {
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
-    }
-    ,
+    },
 
     update: function () {
         var data={
-            title: ${'#title'}.val(),
-            content: ${'#content'}.val()
+            title: $('#title').val(),
+            content: $('#content').val()
         };
 
         var id = $('#id').val();
