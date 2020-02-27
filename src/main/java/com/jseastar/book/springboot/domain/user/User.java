@@ -1,6 +1,7 @@
 package com.jseastar.book.springboot.domain.user;
 
 import com.jseastar.book.springboot.domain.BaseTimeEntity;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -21,11 +22,27 @@ public class User extends BaseTimeEntity {
     @Column
     private String picture;
 
-    // TODO : 177 Page!
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
 
-    public User() {
+    @Builder
+    public User(String name, String email, String picture, Role role){
+        this.name = name;
+        this.email = email;
+        this.picture = picture;
+        this.role = role;
     }
+
+    public User update(String name, String picture) {
+        this.name = name;
+        this.picture = picture;
+
+        return this;
+    }
+
+    public String getRoleKey(){
+        return this.role.getKey();
+    }
+
 }
